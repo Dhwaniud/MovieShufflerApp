@@ -1,65 +1,72 @@
 import React, { useState } from "react";
+import ChooseMovie from "./ChooseMovie";
+
+const getYears = (startYear = 1980) => {
+    const currentYear = new Date().getFullYear();
+    const fromYears = [];
+
+    for (let i = startYear; i < currentYear; i += 5) {
+        fromYears.push(i);
+    }
+    fromYears.push(currentYear);
+
+    return fromYears;
+};
 
 export default function Homepage() {
-    const options = [
-        "1980 to 1990",
-        "1990 to 2000",
-        "2000 to 2010",
-        "2010 to 2020",
-        "2020 to Present",
-        "All",
-    ];
-
     const [checkedItems, setCheckedItems] = useState({
         Bollywood: false,
         Hollywood: false,
         Both: false,
     });
+    const [selectedFromYear, setSelectedFromYear] = useState();
+    const [clickedNext, setClickedNext] = useState(false);
 
-    const [isOpenFrom, setIsOpenFrom] = useState(false);
-    const [selectedValue, setSelectedValue] = useState("");
-
-    function handleClick(option) {
-        setSelectedValue(option);
-        console.log(option);
-        setIsOpenFrom(false);
+    function handleChange(e) {
+        setSelectedFromYear(e.target.value);
     }
 
-    function handleSend(e) {
-        console.log("Got it Girrrlll");
+    function handleSend() {
+        setClickedNext(true);
+        console.log(checkedItems);
+        console.log("Next Page");
     }
 
     return (
-        <div className="p-4, bg-white, rounded-md, shadow-md">
-            <div className="relative inline-block">
-                <label htmlFor="year">Select time period:</label>
-                <button
-                    onClick={() => {
-                        setIsOpenFrom(!isOpenFrom);
-                    }}
-                    className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+        <div className="p-4 w-full h-full bg-black text-base flex-col rounded-md shadow-md">
+            <div className="relative inline-block mt-8">
+                <label htmlFor="from-year">From:</label>
+                <select
+                    id="from-year"
+                    className="mt-2 w-48 bg-black border rounded shadow-lg"
+                    onChange={handleChange}
                 >
-                    {selectedValue || "Select an option"}
-                </button>
-                {isOpenFrom && (
-                    <ul className="absolute mt-2 w-48 bg-black border rounded shadow-lg" required>
-                        {options.map((option) => (
-                            <li
-                                key={option}
-                                onClick={() => handleClick(option)}
-                                className={`block px-4 py-2 hover:bg-gray-100 `}
-                            >
-                                {option}
-                            </li>
-                        ))}
-                    </ul>
-                )}
+                    <option value="">Select</option>
+                    {getYears().map((year) => (
+                        <option key={year} value={year}>
+                            {year}
+                        </option>
+                    ))}
+                </select>
+                <label htmlFor="to-year">To:</label>
+                <select
+                    id="to-year"
+                    className=" mt-2 w-48 bg-black border rounded shadow-lg"
+                    onChange={handleChange}
+                >
+                    <option value="">Select</option>
+                    {getYears(selectedFromYear).map((year) => (
+                        <option key={year} value={year}>
+                            {year}
+                        </option>
+                    ))}
+                </select>
             </div>
             <div>
                 <label className="mr-2 mb-4 text-pink-500 rounded p-2 space-x-1">
                     Bollywood
                     <input
-                        className="mr-2 mb-4 text-pink-500 rounded p-2"
+                        className="mx-1 mb-4 mt-20 text-pink-500 rounded p-2"
                         type="checkbox"
                         name="bollywood"
                         checked={checkedItems.Bollywood}
@@ -72,10 +79,10 @@ export default function Homepage() {
                     ></input>
                 </label>
 
-                <label className="mr-2 mb-4 text-pink-500 rounded p-2">
+                <label className="mx-2 mb-4 text-pink-500 rounded p-2">
                     Hollywood
                     <input
-                        className="mr-2 mb-4 text-pink-500 rounded p-2"
+                        className="mx-1 mb-4 text-pink-500 rounded p-2"
                         type="checkbox"
                         name="hollywood"
                         checked={checkedItems.Hollywood}
@@ -88,10 +95,10 @@ export default function Homepage() {
                     ></input>
                 </label>
 
-                <label className="mr-2 mb-4 text-pink-500 rounded p-2">
+                <label className="mx-2 mb-4 text-pink-500 rounded p-2">
                     Both
                     <input
-                        className="mr-2 mb-4 text-pink-500 rounded p-2"
+                        className="mx-1 mb-4 text-pink-500 rounded p-2"
                         type="checkbox"
                         name="Both"
                         checked={checkedItems.Both}
@@ -105,12 +112,18 @@ export default function Homepage() {
                 </label>
             </div>
             <button
-                type="Primary"
-                className="mr-2 mb-4 text-blue-500 rounded p-2"
+                type="button"
+                className="mr-2 mb-4 mt-10 text-blue-500 rounded p-2 object-center"
                 onClick={handleSend}
             >
-                Get it, Girrrrll
+                Next
             </button>
+            {clickedNext && (
+                <ChooseMovie
+                    option={selectedFromYear}
+                    checkedItems={checkedItems}
+                />
+            )}
         </div>
     );
 }

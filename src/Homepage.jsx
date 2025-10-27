@@ -5,39 +5,48 @@ const getYears = (startYear = 1980) => {
     const currentYear = new Date().getFullYear();
     const fromYears = [];
 
-    for (let i = startYear; i < currentYear; i += 5) {
+    for (let i = Number(startYear); i < currentYear; i += 5) {
         fromYears.push(i);
     }
+    //console.log(fromYears)
     fromYears.push(currentYear);
 
     return fromYears;
 };
 
-export default function Homepage() {
+export default function Homepage(props) {
     const [checkedItems, setCheckedItems] = useState({
         Bollywood: false,
         Hollywood: false,
-        Both: false,
     });
     const [selectedFromYear, setSelectedFromYear] = useState();
-    const [clickedNext, setClickedNext] = useState(false);
+    const [selectedToYear, setSelectedToYear] = useState();
 
     function handleChange(e) {
-        setSelectedFromYear(e.target.value);
+        if (e.target.name === "fromYear") {
+            setSelectedFromYear(e.target.value);
+        } else {
+            setSelectedToYear(e.target.value);
+        }
     }
 
     function handleSend() {
-        setClickedNext(true);
-        console.log(checkedItems);
-        console.log("Next Page");
+        const items = Object.entries(checkedItems).filter(([_, v]) => v).map(([k]) => k);
+        props.setPreferences({
+            fromYear: selectedFromYear,
+            toYear: selectedToYear,
+            items,
+        });
     }
 
     return (
-        <div className="p-4 w-full h-full bg-black text-base flex-col rounded-md shadow-md">
-            <div className="relative inline-block mt-8">
+        <div className="p-4 w-full h-full bg-black flex-col">
+            <h1>Select </h1>
+            <div className="relative inline-block mt-8 text-white">
                 <label htmlFor="from-year">From:</label>
                 <select
                     id="from-year"
+                    name="fromYear"
                     className="mt-2 w-48 bg-black border rounded shadow-lg"
                     onChange={handleChange}
                 >
@@ -51,8 +60,9 @@ export default function Homepage() {
                 <label htmlFor="to-year">To:</label>
                 <select
                     id="to-year"
+                    name="toYear"
                     className=" mt-2 w-48 bg-black border rounded shadow-lg"
-                    onChange={handleChange}
+                    onClick={handleChange}
                 >
                     <option value="">Select</option>
                     {getYears(selectedFromYear).map((year) => (
@@ -63,7 +73,7 @@ export default function Homepage() {
                 </select>
             </div>
             <div>
-                <label className="mr-2 mb-4 text-pink-500 rounded p-2 space-x-1">
+                <label className="mx-1 mb-4 text-pink-500 rounded p-2 space-x-1">
                     Bollywood
                     <input
                         className="mx-1 mb-4 mt-20 text-pink-500 rounded p-2"
@@ -94,22 +104,6 @@ export default function Homepage() {
                         }
                     ></input>
                 </label>
-
-                <label className="mx-2 mb-4 text-pink-500 rounded p-2">
-                    Both
-                    <input
-                        className="mx-1 mb-4 text-pink-500 rounded p-2"
-                        type="checkbox"
-                        name="Both"
-                        checked={checkedItems.Both}
-                        onChange={(e) =>
-                            setCheckedItems({
-                                ...checkedItems,
-                                Both: e.target.checked,
-                            })
-                        }
-                    ></input>
-                </label>
             </div>
             <button
                 type="button"
@@ -118,12 +112,6 @@ export default function Homepage() {
             >
                 Next
             </button>
-            {clickedNext && (
-                <ChooseMovie
-                    option={selectedFromYear}
-                    checkedItems={checkedItems}
-                />
-            )}
         </div>
     );
 }

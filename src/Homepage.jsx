@@ -31,11 +31,14 @@ export default function Homepage(props) {
     }
 
     function handleSend() {
-        const items = Object.entries(checkedItems).filter(([_, v]) => v).map(([k]) => k);
+        const items = Object.entries(checkedItems)
+            .filter(([_, v]) => v)
+            .map(([k]) => k);
+
         props.setPreferences({
-            fromYear: selectedFromYear,
-            toYear: selectedToYear,
-            items,
+            fromYear: selectedFromYear ?? 1980,
+            toYear: selectedToYear ?? new Date().getFullYear(),
+            items: items.length === 0 ? ["Hollywood", "Bollywood"] : items,
         });
     }
 

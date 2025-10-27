@@ -6,10 +6,17 @@ import React, { useState } from "react";
 function App() {
     const [preferences, setPreferences] = useState(null);
 
+    const resetPreferences = () => {
+        setPreferences(null);
+    };
+
     return (
         <>
-            <Homepage setPreferences={setPreferences} />
-            {preferences && <ChooseMovie prefs={preferences}/>}
+            {!preferences ? (
+                <Homepage setPreferences={setPreferences} />
+            ) : (
+                <ChooseMovie prefs={preferences} handleBackClick={resetPreferences} />
+            )}
         </>
     );
 }

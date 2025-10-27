@@ -1,0 +1,43 @@
+[
+    {
+        "movieName": "Kal ho na ho",
+        "cast": [
+            "Shahrukh Khan, Preity Zinta, Saif Ali Khan"
+        ],
+        "releaseDate": "2003"
+    },
+    {
+        "movieName": "Coolie",
+        "cast": [
+            "Amitabh Bacchan"
+        ],
+        "releaseDate": "1983"
+    },
+    {
+        "movieName": "Inception",
+        "cast": [
+            "Leonardo DiCaprio",
+            "Joseph Gordon-Levitt",
+            "Ellen Page"
+        ],
+        "releaseDate": "2010"
+    },
+    {
+        "movieName": "The Matrix",
+        "cast": [
+            "Keanu Reeves",
+            "Laurence Fishburne",
+            "Carrie-Anne Moss"
+        ],
+        "releaseDate": "1999"
+    },
+    {
+        "movieName": "Black Panther",
+        "cast": [
+            "Chadwick Boseman",
+            "Michael B. Jordan",
+            "Lupita Nyong'o"
+        ],
+        "releaseDate": "2018"
+    }
+]

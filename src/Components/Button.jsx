@@ -11,12 +11,11 @@ export default function Button({
         "font-semibold rounded-lg transition duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2";
 
     const variantClasses = {
-        primary: "bg-blue-500 text-white hover:bg-blue-600 focus:ring-blue-500",
+        primary: "bg-emerald-500 text-white hover:bg-blue-600 focus:ring-blue-500 gap-2",
         secondary:
             "bg-gray-500 text-white hover:bg-gray-600 focus:ring-gray-500",
         outline:
             "bg-transparent border-2 border-blue-500 text-blue-500 hover:bg-blue-50",
-        pink: "bg-pink-500 text-white hover:bg-pink-600 focus:ring-pink-500",
     };
 
     const sizeClasses = {

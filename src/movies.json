@@ -4,14 +4,16 @@
         "cast": [
             "Shahrukh Khan, Preity Zinta, Saif Ali Khan"
         ],
-        "releaseDate": "2003"
+        "releaseDate": "2003",
+        "image": "https://image.tmdb.org/t/p/w500/9gk7adHYeDvHkCSEqAvQNLV5Uge.jpg"
     },
     {
         "movieName": "Coolie",
         "cast": [
             "Amitabh Bacchan"
         ],
-        "releaseDate": "1983"
+        "releaseDate": "1983",
+        "image": "https://image.tmdb.org/t/p/w500/9gk7adHYeDvHkCSEqAvQNLV5Uge.jpg"
     },
     {
         "movieName": "Inception",
@@ -20,7 +22,8 @@
             "Joseph Gordon-Levitt",
             "Ellen Page"
         ],
-        "releaseDate": "2010"
+        "releaseDate": "2010",
+        "image": "https://image.tmdb.org/t/p/w500/9gk7adHYeDvHkCSEqAvQNLV5Uge.jpg"
     },
     {
         "movieName": "The Matrix",
@@ -29,7 +32,8 @@
             "Laurence Fishburne",
             "Carrie-Anne Moss"
         ],
-        "releaseDate": "1999"
+        "releaseDate": "1999",
+        "image": "https://image.tmdb.org/t/p/w500/9gk7adHYeDvHkCSEqAvQNLV5Uge.jpg"
     },
     {
         "movieName": "Black Panther",
@@ -38,6 +42,7 @@
             "Michael B. Jordan",
             "Lupita Nyong'o"
         ],
-        "releaseDate": "2018"
+        "releaseDate": "2018",
+        "image": "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg"
     }
 ]

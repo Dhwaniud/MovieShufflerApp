@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ChooseMovie from "./ChooseMovie";
+import Button from "./Components/Button";
 
 const getYears = (startYear = 1980) => {
     const currentYear = new Date().getFullYear();
@@ -108,13 +109,9 @@ export default function Homepage(props) {
                     ></input>
                 </label>
             </div>
-            <button
-                type="button"
-                className="mr-2 mb-4 mt-10 text-blue-500 rounded p-2 object-center"
-                onClick={handleSend}
-            >
+            <Button variant="pink" size="medium" onClick={handleSend}>
                 Next
-            </button>
+            </Button>
         </div>
     );
 }

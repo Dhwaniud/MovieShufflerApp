@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from "react";
 import data from "./movies.json";
+import Button from "./Components/Button";
 
 export default function ChooseMovie({ movies, handleBackClick }) {
     const [randomMovie, setRandomMovie] = useState(movies[0]);
@@ -12,9 +13,17 @@ export default function ChooseMovie({ movies, handleBackClick }) {
     return (
         <>
             <div>
-                <button onClick={handleBackClick}>Back</button>
+                <Button
+                    variant="secondary"
+                    size="small"
+                    onClick={handleBackClick}
+                >
+                    Back
+                </Button>
                 <p>{randomMovie?.movieName}</p>
-                <button onClick={handleShuffle}>Shuffle</button>
+                <Button variant="pink" size="medium" onClick={handleShuffle}>
+                    Shuffle
+                </Button>
             </div>
         </>
     );

@@ -8,14 +8,14 @@ export default function Button({
     ...props
 }) {
     const baseClasses =
-        "font-semibold rounded-lg transition duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2";
+        "font-semibold rounded-md transition duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2";
 
     const variantClasses = {
-        primary: "bg-emerald-500 text-white hover:bg-blue-600 focus:ring-blue-500 gap-2",
+        primary: "bg-emerald-500 text-white focus:ring-blue-500 gap-2",
         secondary:
-            "bg-gray-500 text-white hover:bg-gray-600 focus:ring-gray-500",
+            "bg-gray-500 text-white focus:ring-gray-500 p-6 m-2",
         outline:
-            "bg-transparent border-2 border-blue-500 text-blue-500 hover:bg-blue-50",
+            "bg-transparent border-2 border-blue-500 text-blue-500",
     };
 
     const sizeClasses = {

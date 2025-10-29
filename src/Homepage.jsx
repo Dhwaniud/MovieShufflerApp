@@ -16,8 +16,8 @@ const getYears = (startYear = 1980) => {
 
 export default function Homepage(props) {
     const [checkedItems, setCheckedItems] = useState({
-        Bollywood: false,
-        Hollywood: false,
+        hi: false,
+        en: false,
     });
     const [selectedFromYear, setSelectedFromYear] = useState();
     const [selectedToYear, setSelectedToYear] = useState();
@@ -38,7 +38,7 @@ export default function Homepage(props) {
         props.setPreferences({
             fromYear: selectedFromYear ?? 1980,
             toYear: selectedToYear ?? new Date().getFullYear(),
-            items: items.length === 0 ? ["Hollywood", "Bollywood"] : items,
+            items: items.length === 0 ? ["en", "hi"] : items,
         });
     }
 
@@ -93,11 +93,11 @@ export default function Homepage(props) {
                         <input
                             type="checkbox"
                             name="bollywood"
-                            checked={checkedItems.Bollywood}
+                            checked={checkedItems.hi}
                             onChange={(e) =>
                                 setCheckedItems({
                                     ...checkedItems,
-                                    Bollywood: e.target.checked,
+                                    hi: e.target.checked,
                                 })
                             }
                             className="w-4 h-4"
@@ -109,11 +109,11 @@ export default function Homepage(props) {
                         <input
                             type="checkbox"
                             name="hollywood"
-                            checked={checkedItems.Hollywood}
+                            checked={checkedItems.en}
                             onChange={(e) =>
                                 setCheckedItems({
                                     ...checkedItems,
-                                    Hollywood: e.target.checked,
+                                    en: e.target.checked,
                                 })
                             }
                             className="w-4 h-4"
